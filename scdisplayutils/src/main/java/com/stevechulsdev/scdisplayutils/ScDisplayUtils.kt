@@ -62,6 +62,7 @@ object ScDisplayUtils {
         val rl = RelativeLayout(activity.applicationContext)
         rl!!.gravity = Gravity.CENTER
         rl!!.addView(mProgressBar)
+        rl!!.isClickable = true
 
         layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT)
 
