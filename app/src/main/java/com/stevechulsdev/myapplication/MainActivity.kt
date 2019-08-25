@@ -1,8 +1,8 @@
 package com.stevechulsdev.myapplication
 
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import com.stevechulsdev.scdisplayutils.ScDisplayUtils
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -14,6 +14,9 @@ class MainActivity : AppCompatActivity() {
 
         bt_show.setOnClickListener {
             ScDisplayUtils.showProgressBar(this)
+            Handler().postDelayed({
+                ScDisplayUtils.hideProgressBar()
+            }, 2000)
         }
 
         bt_hide.setOnClickListener {
