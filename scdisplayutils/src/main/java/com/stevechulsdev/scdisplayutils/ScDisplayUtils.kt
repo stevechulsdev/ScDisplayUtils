@@ -19,6 +19,8 @@ object ScDisplayUtils {
     private var TAG: String = javaClass.simpleName
 
     private var mProgressBar: ProgressBar? = null
+    private var rl: RelativeLayout? = null
+    private var parent: ViewGroup? = null
 
     /**
      * Show Progress Bar (Circle)
@@ -60,12 +62,13 @@ object ScDisplayUtils {
             }
         }
 
-        val parent = activity.window.decorView.rootView as ViewGroup
+        parent = activity.window.decorView.rootView as ViewGroup
         val layoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT)
 
-        val rl = RelativeLayout(activity.applicationContext)
+        rl = RelativeLayout(activity.applicationContext)
         rl!!.gravity = Gravity.CENTER
         rl!!.addView(mProgressBar)
+        rl!!.isClickable = true
 
         layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT)
 
@@ -76,10 +79,19 @@ object ScDisplayUtils {
      * Hide ProgressBar
      */
     fun hideProgressBar() {
-        mProgressBar?.let {it.apply {
+        mProgressBar?.let { it.apply {
             if(visibility == View.VISIBLE) visibility = View.GONE
-            mProgressBar = null
         } }
+
+        parent?.let { viewGroup ->
+            rl?.let {
+                viewGroup.removeView(it)
+            }
+        }
+
+        mProgressBar = null
+        rl = null
+        parent = null
     }
 
     fun toast(context: Context, toastMsg: String, showLong: Boolean = false) {

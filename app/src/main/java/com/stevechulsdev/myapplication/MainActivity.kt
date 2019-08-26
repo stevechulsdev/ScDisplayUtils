@@ -20,8 +20,6 @@ class MainActivity : AppCompatActivity() {
 
         bt_show.setOnClickListener {
             ScDisplayUtils.showProgressBar(this)
-            ScDisplayUtils.showProgressBar(this, true)
-            ScDisplayUtils.showProgressBar(this, true, Color.RED)
         }
 
         bt_hide.setOnClickListener {
