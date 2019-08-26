@@ -1,6 +1,7 @@
 package com.stevechulsdev.scdisplayutils
 
 import android.app.Activity
+import android.content.Context
 import android.graphics.*
 import android.os.Build
 import android.util.Log
@@ -9,6 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.RelativeLayout
+import android.widget.Toast
+import com.google.android.material.snackbar.Snackbar
+import org.jetbrains.anko.alert
 import java.lang.Exception
 
 object ScDisplayUtils {
@@ -76,5 +80,39 @@ object ScDisplayUtils {
             if(visibility == View.VISIBLE) visibility = View.GONE
             mProgressBar = null
         } }
+    }
+
+    fun toast(context: Context, toastMsg: String, showLong: Boolean = false) {
+        if(showLong) Toast.makeText(context, toastMsg, Toast.LENGTH_LONG).show()
+        else Toast.makeText(context, toastMsg, Toast.LENGTH_SHORT).show()
+    }
+
+    fun snackBar(mainView: View, snackbarMsg: String, showLong: Boolean = false) {
+        if(showLong) Snackbar.make(mainView, snackbarMsg, Snackbar.LENGTH_LONG).show()
+        else Snackbar.make(mainView, snackbarMsg, Snackbar.LENGTH_SHORT).show()
+    }
+
+    fun snackBarButton(mainView: View, snackbarMsg: String, buttonMsg: String) {
+        Snackbar.make(mainView, snackbarMsg, Snackbar.LENGTH_INDEFINITE).apply {
+            setAction(buttonMsg) {
+                dismiss()
+            }
+            show()
+        }
+    }
+
+    fun showDialog(context: Context, dialogTitle: String, dialogMsg: String, dialogOneButtonClickListener: DialogOneButtonClickListener? = null, buttonMsg: String = "확인", dismissOutSideTouch: Boolean = false) {
+        context.alert(dialogMsg, dialogTitle) {
+            isCancelable = dismissOutSideTouch
+            positiveButton(buttonMsg) {
+                dialogOneButtonClickListener?.let {
+                    it.onClick()
+                }
+            }
+        }.show()
+    }
+
+    interface DialogOneButtonClickListener {
+        fun onClick()
     }
 }

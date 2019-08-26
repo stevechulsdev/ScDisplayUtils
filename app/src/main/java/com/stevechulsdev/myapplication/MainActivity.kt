@@ -12,8 +12,16 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+//        ScDisplayUtils.snackBar(mainView, "Show Snack Bar", true)
+
+//        ScDisplayUtils.snackBarButton(mainView, "Show Button Snack Bar", "확인")
+
+//        ScDisplayUtils.showDialog(this, "안내", "로그인 하시겠습니까?")
+
         bt_show.setOnClickListener {
             ScDisplayUtils.showProgressBar(this)
+            ScDisplayUtils.showProgressBar(this, true)
+            ScDisplayUtils.showProgressBar(this, true, Color.RED)
         }
 
         bt_hide.setOnClickListener {
