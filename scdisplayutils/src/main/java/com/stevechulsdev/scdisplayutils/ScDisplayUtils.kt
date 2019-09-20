@@ -82,9 +82,9 @@ object ScDisplayUtils {
      * Hide ProgressBar
      */
     fun hideProgressBar() {
-        mProgressBar?.let { it.apply {
-            if(visibility == View.VISIBLE) visibility = View.GONE
-        } }
+//        mProgressBar?.let { it.apply {
+//            if(visibility == View.VISIBLE) visibility = View.GONE
+//        } }
 
         parent?.let { viewGroup ->
             rl?.let {
