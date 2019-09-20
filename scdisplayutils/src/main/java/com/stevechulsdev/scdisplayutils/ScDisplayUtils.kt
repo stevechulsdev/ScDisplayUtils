@@ -47,7 +47,7 @@ object ScDisplayUtils {
             }
         }
         else {
-            mProgressBar = ProgressBar(activity.applicationContext, null, android.R.attr.progressBarStyle).apply {
+            mProgressBar = ProgressBar(activity.applicationContext, null, android.R.attr.progressBarStyleInverse).apply {
                 isIndeterminate = true
                 setBackgroundColor(ContextCompat.getColor(activity, android.R.color.transparent))
                 visibility = View.VISIBLE
