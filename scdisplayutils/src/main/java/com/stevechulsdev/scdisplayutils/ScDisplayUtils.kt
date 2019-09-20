@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.google.android.material.snackbar.Snackbar
 import org.jetbrains.anko.alert
 import java.lang.Exception
@@ -69,6 +70,7 @@ object ScDisplayUtils {
         rl!!.gravity = Gravity.CENTER
         rl!!.addView(mProgressBar)
         rl!!.isClickable = true
+        rl!!.setBackgroundColor(Color.parseColor("#80000000"))
 
         layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT)
 
