@@ -71,7 +71,7 @@ object ScDisplayUtils {
         rl!!.gravity = Gravity.CENTER
         rl!!.addView(mProgressBar)
         rl!!.isClickable = true
-        rl!!.setBackgroundColor(Color.parseColor("#80000000"))
+//        rl!!.setBackgroundColor(Color.parseColor("#80000000"))
 
         layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT)
 
