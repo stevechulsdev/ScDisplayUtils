@@ -89,11 +89,11 @@ object ScDisplayUtils {
 //            if(visibility == View.VISIBLE) visibility = View.GONE
 //        } }
 
-        parent?.let { viewGroup ->
-            rl?.let {
-                viewGroup.removeView(it)
-            }
-        }
+//        parent?.let { viewGroup ->
+//            rl?.let {
+//                viewGroup.removeView(it)
+//            }
+//        }
 
         mProgressBar = null
         rl = null
