@@ -33,6 +33,7 @@ object ScDisplayUtils {
         if(largeCircle) {
             mProgressBar = ProgressBar(activity.applicationContext, null, android.R.attr.progressBarStyleLarge).apply {
                 isIndeterminate = true
+                setBackgroundColor(ContextCompat.getColor(activity, android.R.color.transparent))
                 visibility = View.VISIBLE
 
                 try {
