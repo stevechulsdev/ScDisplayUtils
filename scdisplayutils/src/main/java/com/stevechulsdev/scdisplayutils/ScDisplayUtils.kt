@@ -3,6 +3,7 @@ package com.stevechulsdev.scdisplayutils
 import android.app.Activity
 import android.content.Context
 import android.graphics.*
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.util.Log
 import android.view.Gravity
@@ -66,6 +67,7 @@ object ScDisplayUtils {
         }
 
         parent = activity.window.decorView.rootView as ViewGroup
+        activity.window.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         val layoutParams = RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT)
 
         rl = RelativeLayout(activity.applicationContext)
