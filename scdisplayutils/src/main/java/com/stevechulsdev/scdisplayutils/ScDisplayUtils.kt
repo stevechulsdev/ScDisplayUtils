@@ -138,7 +138,7 @@ object ScDisplayUtils {
             }
             negativeButton(secondButtonText) {
                 dialogTwoButtonClickListener?.let {
-                    it.onCLickCancel()
+                    it.onClickCancel()
                 }
             }
         }.show()
@@ -150,6 +150,6 @@ object ScDisplayUtils {
 
     interface DialogTwoButtonClickListener {
         fun onClickConfirm()
-        fun onCLickCancel()
+        fun onClickCancel()
     }
 }
