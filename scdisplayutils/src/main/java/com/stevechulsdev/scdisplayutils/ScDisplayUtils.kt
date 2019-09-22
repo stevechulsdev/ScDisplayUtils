@@ -34,7 +34,6 @@ object ScDisplayUtils {
         if(largeCircle) {
             mProgressBar = ProgressBar(activity.applicationContext, null, android.R.attr.progressBarStyleLarge).apply {
                 isIndeterminate = true
-                setBackgroundColor(ContextCompat.getColor(activity, android.R.color.transparent))
                 visibility = View.VISIBLE
 
                 try {
@@ -49,9 +48,8 @@ object ScDisplayUtils {
             }
         }
         else {
-            mProgressBar = ProgressBar(activity.applicationContext, null, android.R.attr.progressBarStyleInverse).apply {
+            mProgressBar = ProgressBar(activity.applicationContext, null, android.R.attr.progressBarStyle).apply {
                 isIndeterminate = true
-                setBackgroundColor(ContextCompat.getColor(activity, android.R.color.transparent))
                 visibility = View.VISIBLE
 
                 try {
@@ -74,7 +72,7 @@ object ScDisplayUtils {
         rl!!.gravity = Gravity.CENTER
         rl!!.addView(mProgressBar)
         rl!!.isClickable = true
-//        rl!!.setBackgroundColor(Color.parseColor("#80000000"))
+        rl!!.setBackgroundColor(Color.parseColor("#80000000"))
 
         layoutParams.addRule(RelativeLayout.CENTER_IN_PARENT)
 
@@ -85,15 +83,15 @@ object ScDisplayUtils {
      * Hide ProgressBar
      */
     fun hideProgressBar() {
-//        mProgressBar?.let { it.apply {
-//            if(visibility == View.VISIBLE) visibility = View.GONE
-//        } }
+        mProgressBar?.let { it.apply {
+            if(visibility == View.VISIBLE) visibility = View.GONE
+        } }
 
-//        parent?.let { viewGroup ->
-//            rl?.let {
-//                viewGroup.removeView(it)
-//            }
-//        }
+        parent?.let { viewGroup ->
+            rl?.let {
+                viewGroup.removeView(it)
+            }
+        }
 
         mProgressBar = null
         rl = null
@@ -130,7 +128,28 @@ object ScDisplayUtils {
         }.show()
     }
 
+    fun showDialog(context: Context, dialogTitle: String, dialogMsg: String, dialogTwoButtonClickListener: DialogTwoButtonClickListener? = null, firstButtonText: String = "확인", secondButtonText: String = "취소", dismissOutSideTouch: Boolean = false) {
+        context.alert(dialogMsg, dialogTitle) {
+            isCancelable = dismissOutSideTouch
+            positiveButton(firstButtonText) {
+                dialogTwoButtonClickListener?.let {
+                    it.onClickConfirm()
+                }
+            }
+            negativeButton(secondButtonText) {
+                dialogTwoButtonClickListener?.let {
+                    it.onCLickCancel()
+                }
+            }
+        }.show()
+    }
+
     interface DialogOneButtonClickListener {
         fun onClick()
+    }
+
+    interface DialogTwoButtonClickListener {
+        fun onClickConfirm()
+        fun onCLickCancel()
     }
 }
